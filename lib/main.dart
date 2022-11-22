@@ -1,8 +1,7 @@
 import 'package:even_exercise/constants.dart';
+import 'package:even_exercise/screens/home_screen.dart';
+import 'package:even_exercise/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
-
-import 'widgets/concierge_card.dart';
-import 'widgets/hospital_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(lightBackgroundColor),
+      bottomNavigationBar: const BottomNavBar(),
       body: Container(
         alignment: Alignment.center,
         decoration: const BoxDecoration(
@@ -49,48 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
             tileMode: TileMode.clamp,
           ),
         ),
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              const SizedBox(height: 48),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
-                child: Text(
-                  "Hospitals near you",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(fontWeight: FontWeight.w700),
-                ),
-              ),
-              SizedBox(
-                height: 510,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  children: const [HospitalCard(), HospitalCard()],
-                ),
-              ),
-              const SizedBox(height: 48),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
-                child: Text(
-                  "Your medical concierge",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(fontWeight: FontWeight.w700),
-                ),
-              ),
-              const ConciergeCard()
-            ],
-          ),
-        ),
+        child: const HomeScreen(),
       ),
     );
   }
