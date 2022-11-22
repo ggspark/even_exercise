@@ -1,7 +1,6 @@
 import 'package:even_exercise/constants.dart';
 import 'package:even_exercise/screens/history_screen.dart';
 import 'package:even_exercise/screens/home_screen.dart';
-import 'package:even_exercise/screens/service_select_screen.dart';
 import 'package:even_exercise/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -20,11 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const Dashboard(),
-        '/service': (context) => const ServiceSelectScreen()
-      },
+      home: const Dashboard(),
     );
   }
 }

@@ -24,9 +24,12 @@ class ServiceSelectScreen extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
-                    child: const Icon(
-                      Icons.close_rounded,
-                      size: 30,
+                    child: const Hero(
+                      tag: 'hero1',
+                      child: Icon(
+                        Icons.close_rounded,
+                        size: 30,
+                      ),
                     ),
                   ),
                   Expanded(

@@ -1,4 +1,5 @@
 import 'package:even_exercise/constants.dart';
+import 'package:even_exercise/screens/service_select_screen.dart';
 import 'package:even_exercise/widgets/consultation_card.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +46,16 @@ class HistoryScreen extends StatelessWidget {
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () => {Navigator.pushNamed(context, '/service')},
+                    onTap: () => {
+                      Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                              pageBuilder: (_, __, ___) =>
+                                  const ServiceSelectScreen(),
+                              transitionDuration: const Duration(seconds: 1),
+                              transitionsBuilder: (_, a, __, c) =>
+                                  FadeTransition(opacity: a, child: c)))
+                    },
                     child: Container(
                       width: 64,
                       height: 64,
@@ -56,10 +66,13 @@ class HistoryScreen extends StatelessWidget {
                               color: const Color(buttonColorLight), width: 6),
                           shape: BoxShape.circle,
                           color: const Color(buttonColor)),
-                      child: Icon(
-                        Icons.add_rounded,
-                        size: 40,
-                        color: Theme.of(context).colorScheme.onPrimary,
+                      child: Hero(
+                        tag: 'hero1',
+                        child: Icon(
+                          Icons.add_rounded,
+                          size: 40,
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
                       ),
                     ),
                   ),
