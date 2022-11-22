@@ -55,18 +55,25 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return SafeArea(
       child: Stack(
         children: [
-          Container(
-            width: 4,
-            margin: const EdgeInsets.fromLTRB(50, 80, 20, 0),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: <Color>[
-                  Color(buttonColorLight),
-                  Color(darkBackgroundColor),
-                ],
-                tileMode: TileMode.clamp,
+          AnimatedSlide(
+            duration: shortAnimationDuration,
+            curve: Curves.easeIn,
+            offset: _navState == NavState.noNav
+                ? Offset.zero
+                : const Offset(0, 0.5),
+            child: Container(
+              width: 4,
+              margin: const EdgeInsets.fromLTRB(50, 80, 20, 0),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Color(buttonColorLight),
+                    Color(darkBackgroundColor),
+                  ],
+                  tileMode: TileMode.clamp,
+                ),
               ),
             ),
           ),
@@ -77,66 +84,98 @@ class _HistoryScreenState extends State<HistoryScreen> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Text(
-                  "My History",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(fontWeight: FontWeight.w700),
+                child: AnimatedOpacity(
+                  duration: shortAnimationDuration,
+                  curve: Curves.easeIn,
+                  opacity: _navState == NavState.noNav ? 1 : 0,
+                  child: Text(
+                    "My History",
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(fontWeight: FontWeight.w700),
+                  ),
                 ),
               ),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () async => {
-                      setState(() => {_animating = true}),
-                      await Future.delayed(animationDuration),
-                      openSelectService(context),
-                      await Future.delayed(animationDuration),
-                      setState(() => {_animating = false}),
-                    },
-                    child: AnimatedSlide(
-                      duration: shortAnimationDuration,
-                      curve: Curves.easeIn,
-                      offset: _navState == NavState.noNav
-                          ? Offset.zero
-                          : const Offset(0, -2),
-                      child: Container(
-                        width: 64,
-                        height: 64,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 20),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(buttonColorLight), width: 6),
-                            shape: BoxShape.circle,
-                            color: const Color(buttonColor)),
-                        child: Hero(
-                          tag: 'hero1',
-                          child: Icon(
-                            Icons.add_rounded,
-                            size: 40,
-                            color: Theme.of(context).colorScheme.onPrimary,
+              AnimatedOpacity(
+                duration: shortAnimationDuration,
+                curve: Curves.easeIn,
+                opacity: _navState == NavState.noNav ? 1 : 0,
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () async => {
+                        setState(() => {_animating = true}),
+                        await Future.delayed(animationDuration),
+                        openSelectService(context),
+                        await Future.delayed(animationDuration),
+                        setState(() => {_animating = false}),
+                      },
+                      child: AnimatedSlide(
+                        duration: shortAnimationDuration,
+                        curve: Curves.easeIn,
+                        offset: _navState == NavState.noNav
+                            ? Offset.zero
+                            : const Offset(0, -2),
+                        child: Container(
+                          width: 64,
+                          height: 64,
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 8, horizontal: 20),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color(buttonColorLight),
+                                  width: 6),
+                              shape: BoxShape.circle,
+                              color: const Color(buttonColor)),
+                          child: Hero(
+                            tag: 'hero1',
+                            child: Icon(
+                              Icons.add_rounded,
+                              size: 40,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Text(
-                    "Add consultation",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w700,
-                        color: const Color(buttonColor)),
-                  ),
-                ],
+                    Text(
+                      "Add consultation",
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: const Color(buttonColor)),
+                    ),
+                  ],
+                ),
               ),
               Expanded(
                 child: ListView(
                   scrollDirection: Axis.vertical,
-                  children: const [
-                    ConsultationCard(),
-                    ConsultationCard(),
-                    ConsultationCard()
+                  children: [
+                    AnimatedSlide(
+                      duration: shortAnimationDuration,
+                      curve: Curves.easeIn,
+                      offset: _navState == NavState.noNav
+                          ? Offset.zero
+                          : const Offset(1, 0),
+                      child: const ConsultationCard(),
+                    ),
+                    AnimatedSlide(
+                      duration: shortAnimationDuration,
+                      curve: Curves.easeIn,
+                      offset: _navState == NavState.noNav
+                          ? Offset.zero
+                          : const Offset(1.5, 0),
+                      child: const ConsultationCard(),
+                    ),
+                    AnimatedSlide(
+                      duration: shortAnimationDuration,
+                      curve: Curves.easeIn,
+                      offset: _navState == NavState.noNav
+                          ? Offset.zero
+                          : const Offset(2, 0),
+                      child: const ConsultationCard(),
+                    ),
                   ],
                 ),
               )
