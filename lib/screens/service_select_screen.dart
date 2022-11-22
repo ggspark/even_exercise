@@ -57,7 +57,7 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
                     ),
                   ),
                 ),
-                Expanded(
+                Positioned(
                   child: AnimatedContainer(
                     duration: animationDuration,
                     curve: Curves.easeIn,
