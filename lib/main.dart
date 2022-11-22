@@ -1,5 +1,6 @@
 import 'package:even_exercise/constants.dart';
 import 'package:even_exercise/screens/history_screen.dart';
+import 'package:even_exercise/screens/service_select_screen.dart';
 import 'package:even_exercise/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: const Color(lightBackgroundColor),
       bottomNavigationBar: const BottomNavBar(),
+      drawer: const ServiceSelectScreen(),
       body: Container(
         alignment: Alignment.center,
         decoration: const BoxDecoration(

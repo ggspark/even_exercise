@@ -6,3 +6,4 @@ const int phoneBlue = 0xFF0055FF;
 const int bottomNavBgColor = 0xFF131720;
 const int buttonColor = 0xFF0055FF;
 const int buttonColorLight = 0xFFB1C9F8;
+const int drawerBackground = 0xEFC7CCD8;
