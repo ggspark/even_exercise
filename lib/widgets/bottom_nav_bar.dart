@@ -2,15 +2,24 @@ import 'package:even_exercise/constants.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({
-    Key? key,
-  }) : super(key: key);
+  const BottomNavBar({Key? key, required this.currentIndex}) : super(key: key);
+
+  final Function currentIndex;
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  int selectedIndex = 0;
+
+  void setIndex(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+    widget.currentIndex(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,6 +28,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       child: Column(children: [
         Container(
           height: 60,
+          padding: const EdgeInsets.only(top: 8),
           decoration: const BoxDecoration(
             color: Color(darkBackgroundColor),
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
@@ -27,58 +37,70 @@ class _BottomNavBarState extends State<BottomNavBar> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Color(bottomNavBgColor),
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40),
+                child: GestureDetector(
+                  onTap: () => setIndex(0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: getContainerColor(0),
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(40),
+                      ),
                     ),
-                  ),
-                  child: Icon(
-                    Icons.home_outlined,
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    child: Icon(
+                      Icons.home_outlined,
+                      color: getIconColor(0),
+                    ),
                   ),
                 ),
               ),
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Color(darkBackgroundColor),
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(40),
+                child: GestureDetector(
+                  onTap: () => setIndex(1),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: getContainerColor(1),
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(40),
+                      ),
                     ),
-                  ),
-                  child: Icon(
-                    Icons.history_outlined,
-                    color: Theme.of(context).colorScheme.onSurface,
+                    child: Icon(
+                      Icons.history_outlined,
+                      color: getIconColor(1),
+                    ),
                   ),
                 ),
               ),
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Color(darkBackgroundColor),
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(40),
+                child: GestureDetector(
+                  onTap: () => setIndex(2),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: getContainerColor(2),
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(40),
+                      ),
                     ),
-                  ),
-                  child: Icon(
-                    Icons.spa_outlined,
-                    color: Theme.of(context).colorScheme.onSurface,
+                    child: Icon(
+                      Icons.spa_outlined,
+                      color: getIconColor(2),
+                    ),
                   ),
                 ),
               ),
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Color(bottomNavBgColor),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
+                child: GestureDetector(
+                  onTap: () => setIndex(3),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: getContainerColor(3),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                      ),
                     ),
-                  ),
-                  child: Icon(
-                    Icons.person_outline,
-                    color: Theme.of(context).colorScheme.onSurface,
+                    child: Icon(
+                      Icons.person_outline,
+                      color: getIconColor(3),
+                    ),
                   ),
                 ),
               ),
@@ -88,4 +110,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ]),
     );
   }
+
+  Color getContainerColor(int index) =>
+      Color(selectedIndex == index ? bottomNavBgColor : darkBackgroundColor);
+  Color getIconColor(int index) => selectedIndex == index
+      ? Theme.of(context).colorScheme.onPrimary
+      : Theme.of(context).colorScheme.onSurface;
 }

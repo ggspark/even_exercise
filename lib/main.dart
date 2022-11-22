@@ -40,7 +40,8 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(lightBackgroundColor),
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar:
+          BottomNavBar(currentIndex: (int index) => {print(index)}),
       body: Container(
         alignment: Alignment.center,
         decoration: const BoxDecoration(
