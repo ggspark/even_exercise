@@ -84,7 +84,7 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
               height: 120,
             ),
             AnimatedSlide(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 200),
               offset: animating ? const Offset(-1, 0) : Offset.zero,
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -95,7 +95,7 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
               ),
             ),
             AnimatedSlide(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 230),
               offset: animating ? const Offset(-1, 0) : Offset.zero,
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -106,7 +106,7 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
               ),
             ),
             AnimatedSlide(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 260),
               offset: animating ? const Offset(-1, 0) : Offset.zero,
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -117,7 +117,7 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
               ),
             ),
             AnimatedSlide(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 290),
               offset: animating ? const Offset(-1, 0) : Offset.zero,
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -128,7 +128,7 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
               ),
             ),
             AnimatedSlide(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 320),
               offset: animating ? const Offset(-1, 0) : Offset.zero,
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
