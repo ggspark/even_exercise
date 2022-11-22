@@ -23,12 +23,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 90,
       color: const Color(bottomNavBgColor),
       child: Column(children: [
         Container(
           height: 60,
           padding: const EdgeInsets.only(top: 8),
+          clipBehavior: Clip.antiAlias,
           decoration: const BoxDecoration(
             color: Color(darkBackgroundColor),
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
