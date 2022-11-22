@@ -33,14 +33,23 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   int currentIndex = 0;
+  int newIndex = 0;
+
+  void setAnimationState(int index) async {
+    setState(() {
+      newIndex = index;
+    });
+    await Future.delayed(shortAnimationDuration);
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(lightBackgroundColor),
-      bottomNavigationBar: BottomNavBar(
-          currentIndex: (int index) => setState(
-                () => currentIndex = index,
-              )),
+      bottomNavigationBar: BottomNavBar(currentIndex: setAnimationState),
       body: Container(
         alignment: Alignment.center,
         decoration: const BoxDecoration(
@@ -54,7 +63,15 @@ class _DashboardState extends State<Dashboard> {
             tileMode: TileMode.clamp,
           ),
         ),
-        child: currentIndex == 0 ? const HomeScreen() : const HistoryScreen(),
+        child: currentIndex == 0
+            ? HomeScreen(
+                navState:
+                    newIndex != 0 ? NavState.bottomNavOut : NavState.noNav,
+              )
+            : HistoryScreen(
+                navState:
+                    newIndex == 0 ? NavState.bottomNavOut : NavState.noNav,
+              ),
       ),
     );
   }

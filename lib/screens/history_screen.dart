@@ -4,16 +4,52 @@ import 'package:even_exercise/widgets/consultation_card.dart';
 import 'package:flutter/material.dart';
 
 class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({
-    Key? key,
-  }) : super(key: key);
+  final NavState navState;
+
+  const HistoryScreen({Key? key, required this.navState}) : super(key: key);
 
   @override
   State<HistoryScreen> createState() => _HistoryScreenState();
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-  bool animating = false;
+  bool _animating = false;
+  NavState _navState = NavState.noNav;
+
+  @override
+  void initState() {
+    super.initState();
+    navigateIn();
+  }
+
+  @override
+  void didUpdateWidget(covariant HistoryScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.navState == NavState.bottomNavOut) {
+      navigateOut();
+    }
+  }
+
+  void navigateIn() async {
+    setState(() {
+      _navState = NavState.bottomNavIn;
+    });
+    await Future.delayed(shortAnimationDuration);
+    if (mounted) {
+      setState(() {
+        _navState = NavState.noNav;
+      });
+    }
+  }
+
+  void navigateOut() async {
+    if (mounted) {
+      setState(() {
+        _navState = NavState.bottomNavOut;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -53,28 +89,35 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 children: [
                   GestureDetector(
                     onTap: () async => {
-                      setState(() => {animating = true}),
+                      setState(() => {_animating = true}),
                       await Future.delayed(animationDuration),
                       openSelectService(context),
                       await Future.delayed(animationDuration),
-                      setState(() => {animating = false}),
+                      setState(() => {_animating = false}),
                     },
-                    child: Container(
-                      width: 64,
-                      height: 64,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 20),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color(buttonColorLight), width: 6),
-                          shape: BoxShape.circle,
-                          color: const Color(buttonColor)),
-                      child: Hero(
-                        tag: 'hero1',
-                        child: Icon(
-                          Icons.add_rounded,
-                          size: 40,
-                          color: Theme.of(context).colorScheme.onPrimary,
+                    child: AnimatedSlide(
+                      duration: shortAnimationDuration,
+                      curve: Curves.easeIn,
+                      offset: _navState == NavState.noNav
+                          ? Offset.zero
+                          : const Offset(0, -2),
+                      child: Container(
+                        width: 64,
+                        height: 64,
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 20),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color(buttonColorLight), width: 6),
+                            shape: BoxShape.circle,
+                            color: const Color(buttonColor)),
+                        child: Hero(
+                          tag: 'hero1',
+                          child: Icon(
+                            Icons.add_rounded,
+                            size: 40,
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          ),
                         ),
                       ),
                     ),
@@ -110,10 +153,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
               child: AnimatedContainer(
                 curve: Curves.easeIn,
                 duration: animationDuration,
-                width:
-                    animating ? MediaQuery.of(context).size.longestSide * 2 : 0,
-                height:
-                    animating ? MediaQuery.of(context).size.longestSide * 2 : 0,
+                width: _animating
+                    ? MediaQuery.of(context).size.longestSide * 2
+                    : 0,
+                height: _animating
+                    ? MediaQuery.of(context).size.longestSide * 2
+                    : 0,
                 decoration: const BoxDecoration(
                     color: Color(buttonColor), shape: BoxShape.circle),
               ),

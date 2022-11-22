@@ -1,11 +1,52 @@
+import 'package:even_exercise/constants.dart';
 import 'package:even_exercise/widgets/concierge_card.dart';
 import 'package:even_exercise/widgets/hospital_card.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({
-    Key? key,
-  }) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  final NavState navState;
+
+  const HomeScreen({Key? key, required this.navState}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  NavState _navState = NavState.noNav;
+  @override
+  void initState() {
+    super.initState();
+    navigateIn();
+  }
+
+  @override
+  void didUpdateWidget(covariant HomeScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.navState == NavState.bottomNavOut) {
+      navigateOut();
+    }
+  }
+
+  void navigateIn() async {
+    setState(() {
+      _navState = NavState.bottomNavIn;
+    });
+    await Future.delayed(shortAnimationDuration);
+    if (mounted) {
+      setState(() {
+        _navState = NavState.noNav;
+      });
+    }
+  }
+
+  void navigateOut() async {
+    if (mounted) {
+      setState(() {
+        _navState = NavState.bottomNavOut;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

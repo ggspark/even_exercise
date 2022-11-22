@@ -9,5 +9,6 @@ const int buttonColorLight = 0xFFB1C9F8;
 const int drawerBackground = 0xEFC7CCD8;
 const int highlightColor = 0xAF0055FF;
 const Duration animationDuration = Duration(milliseconds: 300);
+const Duration shortAnimationDuration = Duration(milliseconds: 150);
 
-enum NavState { bottomNavIn, bottomNavOut }
+enum NavState { bottomNavIn, bottomNavOut, noNav }
