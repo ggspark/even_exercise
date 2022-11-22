@@ -55,10 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         duration: shortAnimationDuration,
         curve: Curves.easeIn,
         offset: _navState == NavState.noNav ? Offset.zero : const Offset(-1, 0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.max,
+        child: ListView(
           children: <Widget>[
             const SizedBox(height: 40),
             Padding(

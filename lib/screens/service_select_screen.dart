@@ -80,64 +80,70 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
                 )
               ],
             ),
-            const SizedBox(
-              height: 120,
-            ),
-            AnimatedSlide(
-              duration: const Duration(milliseconds: 200),
-              offset: animating ? const Offset(-1, 0) : Offset.zero,
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Text(
-                  "Tele-Consultation",
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+            Expanded(
+              child: ListView(
+                children: [
+                  const SizedBox(
+                    height: 120,
+                  ),
+                  AnimatedSlide(
+                    duration: const Duration(milliseconds: 200),
+                    offset: animating ? const Offset(-1, 0) : Offset.zero,
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Text(
+                        "Tele-Consultation",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                  ),
+                  AnimatedSlide(
+                    duration: const Duration(milliseconds: 230),
+                    offset: animating ? const Offset(-1, 0) : Offset.zero,
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Text(
+                        "Consultation",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                  ),
+                  AnimatedSlide(
+                    duration: const Duration(milliseconds: 260),
+                    offset: animating ? const Offset(-1, 0) : Offset.zero,
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Text(
+                        "Lab tests",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                  ),
+                  AnimatedSlide(
+                    duration: const Duration(milliseconds: 290),
+                    offset: animating ? const Offset(-1, 0) : Offset.zero,
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Text(
+                        "Diagnostics",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                  ),
+                  AnimatedSlide(
+                    duration: const Duration(milliseconds: 320),
+                    offset: animating ? const Offset(-1, 0) : Offset.zero,
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Text(
+                        "Health checkup",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            AnimatedSlide(
-              duration: const Duration(milliseconds: 230),
-              offset: animating ? const Offset(-1, 0) : Offset.zero,
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Text(
-                  "Consultation",
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              ),
-            ),
-            AnimatedSlide(
-              duration: const Duration(milliseconds: 260),
-              offset: animating ? const Offset(-1, 0) : Offset.zero,
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Text(
-                  "Lab tests",
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              ),
-            ),
-            AnimatedSlide(
-              duration: const Duration(milliseconds: 290),
-              offset: animating ? const Offset(-1, 0) : Offset.zero,
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Text(
-                  "Diagnostics",
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              ),
-            ),
-            AnimatedSlide(
-              duration: const Duration(milliseconds: 320),
-              offset: animating ? const Offset(-1, 0) : Offset.zero,
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Text(
-                  "Health checkup",
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              ),
-            ),
+            )
           ],
         )),
       ),
