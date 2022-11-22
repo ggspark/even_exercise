@@ -44,20 +44,23 @@ class HistoryScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
-                    width: 64,
-                    height: 64,
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color(buttonColorLight), width: 6),
-                        shape: BoxShape.circle,
-                        color: const Color(buttonColor)),
-                    child: Icon(
-                      Icons.add_rounded,
-                      size: 40,
-                      color: Theme.of(context).colorScheme.onPrimary,
+                  GestureDetector(
+                    onTap: () => {Navigator.pushNamed(context, '/service')},
+                    child: Container(
+                      width: 64,
+                      height: 64,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 20),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color(buttonColorLight), width: 6),
+                          shape: BoxShape.circle,
+                          color: const Color(buttonColor)),
+                      child: Icon(
+                        Icons.add_rounded,
+                        size: 40,
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
                     ),
                   ),
                   Text(

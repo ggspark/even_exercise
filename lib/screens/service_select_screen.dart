@@ -22,9 +22,12 @@ class ServiceSelectScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
               child: Stack(
                 children: [
-                  const Icon(
-                    Icons.close_rounded,
-                    size: 30,
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(
+                      Icons.close_rounded,
+                      size: 30,
+                    ),
                   ),
                   Expanded(
                     child: Align(
