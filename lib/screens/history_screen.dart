@@ -3,11 +3,17 @@ import 'package:even_exercise/screens/service_select_screen.dart';
 import 'package:even_exercise/widgets/consultation_card.dart';
 import 'package:flutter/material.dart';
 
-class HistoryScreen extends StatelessWidget {
+class HistoryScreen extends StatefulWidget {
   const HistoryScreen({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<HistoryScreen> createState() => _HistoryScreenState();
+}
+
+class _HistoryScreenState extends State<HistoryScreen> {
+  bool navigating = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,15 +52,12 @@ class HistoryScreen extends StatelessWidget {
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () => {
-                      Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                              pageBuilder: (_, __, ___) =>
-                                  const ServiceSelectScreen(),
-                              transitionDuration: const Duration(seconds: 1),
-                              transitionsBuilder: (_, a, __, c) =>
-                                  FadeTransition(opacity: a, child: c)))
+                    onTap: () async => {
+                      setState(() => {navigating = true}),
+                      await Future.delayed(const Duration(milliseconds: 400)),
+                      openSelectService(context),
+                      await Future.delayed(const Duration(milliseconds: 400)),
+                      setState(() => {navigating = false}),
                     },
                     child: Container(
                       width: 64,
@@ -96,8 +99,41 @@ class HistoryScreen extends StatelessWidget {
               )
             ],
           ),
+          Positioned(
+            top: 80,
+            left: 50,
+            width: 0,
+            height: 0,
+            child: OverflowBox(
+              maxHeight: MediaQuery.of(context).size.longestSide * 2,
+              maxWidth: MediaQuery.of(context).size.longestSide * 2,
+              child: AnimatedContainer(
+                curve: Curves.easeIn,
+                duration: const Duration(milliseconds: 400),
+                width: navigating
+                    ? MediaQuery.of(context).size.longestSide * 2
+                    : 0,
+                height: navigating
+                    ? MediaQuery.of(context).size.longestSide * 2
+                    : 0,
+                decoration: const BoxDecoration(
+                    color: Color(buttonColor), shape: BoxShape.circle),
+              ),
+            ),
+          ),
         ],
       ),
+    );
+  }
+
+  Future<dynamic> openSelectService(BuildContext context) {
+    return Navigator.push(
+      context,
+      PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const ServiceSelectScreen(),
+          transitionDuration: const Duration(milliseconds: 400),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c)),
     );
   }
 }
