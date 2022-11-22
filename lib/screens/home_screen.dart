@@ -51,43 +51,50 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          const SizedBox(height: 40),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
-            child: Text(
-              "Hospitals near you",
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(fontWeight: FontWeight.w700),
+      child: AnimatedSlide(
+        duration: shortAnimationDuration,
+        curve: Curves.easeIn,
+        offset: _navState == NavState.noNav ? Offset.zero : const Offset(-1, 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            const SizedBox(height: 40),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
+              child: Text(
+                "Hospitals near you",
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 510,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              children: const [HospitalCard(), HospitalCard()],
+            SizedBox(
+              height: 510,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                children: const [HospitalCard(), HospitalCard()],
+              ),
             ),
-          ),
-          const SizedBox(height: 40),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
-            child: Text(
-              "Your medical concierge",
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(fontWeight: FontWeight.w700),
+            const SizedBox(height: 40),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
+              child: Text(
+                "Your medical concierge",
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
-          ),
-          const ConciergeCard()
-        ],
+            const ConciergeCard()
+          ],
+        ),
       ),
     );
   }
