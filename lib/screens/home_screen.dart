@@ -1,5 +1,5 @@
-import 'package:even_exercise/widgets/hospital_card.dart';
 import 'package:even_exercise/widgets/concierge_card.dart';
+import 'package:even_exercise/widgets/hospital_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          const SizedBox(height: 48),
+          const SizedBox(height: 40),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
             child: Text(
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
               children: const [HospitalCard(), HospitalCard()],
             ),
           ),
-          const SizedBox(height: 48),
+          const SizedBox(height: 40),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
             child: Text(
