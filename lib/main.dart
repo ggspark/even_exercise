@@ -1,5 +1,5 @@
 import 'package:even_exercise/constants.dart';
-import 'package:even_exercise/screens/home_screen.dart';
+import 'package:even_exercise/screens/history_screen.dart';
 import 'package:even_exercise/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
             tileMode: TileMode.clamp,
           ),
         ),
-        child: const HomeScreen(),
+        child: const HistoryScreen(),
       ),
     );
   }
