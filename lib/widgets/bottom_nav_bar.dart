@@ -180,44 +180,36 @@ class IconLayer extends StatelessWidget {
         Expanded(
           child: GestureDetector(
             onTap: () => setIndex(0),
-            child: Container(
-              child: Icon(
-                Icons.home_outlined,
-                color: getIconColor(0, context),
-              ),
+            child: Icon(
+              Icons.home_outlined,
+              color: getIconColor(0, context),
             ),
           ),
         ),
         Expanded(
           child: GestureDetector(
             onTap: () => setIndex(1),
-            child: Container(
-              child: Icon(
-                Icons.history_outlined,
-                color: getIconColor(1, context),
-              ),
+            child: Icon(
+              Icons.history_outlined,
+              color: getIconColor(1, context),
             ),
           ),
         ),
         Expanded(
           child: GestureDetector(
             onTap: () => setIndex(2),
-            child: Container(
-              child: Icon(
-                Icons.spa_outlined,
-                color: getIconColor(2, context),
-              ),
+            child: Icon(
+              Icons.spa_outlined,
+              color: getIconColor(2, context),
             ),
           ),
         ),
         Expanded(
           child: GestureDetector(
             onTap: () => setIndex(3),
-            child: Container(
-              child: Icon(
-                Icons.person_outline,
-                color: getIconColor(3, context),
-              ),
+            child: Icon(
+              Icons.person_outline,
+              color: getIconColor(3, context),
             ),
           ),
         ),
