@@ -1,6 +1,22 @@
 # even_exercise
 
-A new Flutter project.
+To run this project install flutter sdk and run
+
+```
+flutter run -d iPhone
+```
+
+```
+flutter run -d android
+```
+
+```
+flutter run -d macos
+```
+
+```
+flutter run -d chrome
+```
 
 ## Getting Started
 
