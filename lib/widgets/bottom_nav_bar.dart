@@ -134,7 +134,7 @@ class AnimationLayer extends StatelessWidget {
         Expanded(
           child: AnimatedSlide(
             offset: Offset(selectedIndex * 1.0, 0),
-            duration: const Duration(milliseconds: 300),
+            duration: animationDuration,
             curve: Curves.easeIn,
             child: Column(children: const [
               Padding(

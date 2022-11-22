@@ -54,9 +54,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   GestureDetector(
                     onTap: () async => {
                       setState(() => {animating = true}),
-                      await Future.delayed(const Duration(milliseconds: 400)),
+                      await Future.delayed(animationDuration),
                       openSelectService(context),
-                      await Future.delayed(const Duration(milliseconds: 400)),
+                      await Future.delayed(animationDuration),
                       setState(() => {animating = false}),
                     },
                     child: Container(
@@ -109,7 +109,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               maxWidth: MediaQuery.of(context).size.longestSide * 2,
               child: AnimatedContainer(
                 curve: Curves.easeIn,
-                duration: const Duration(milliseconds: 400),
+                duration: animationDuration,
                 width:
                     animating ? MediaQuery.of(context).size.longestSide * 2 : 0,
                 height:
@@ -129,7 +129,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       context,
       PageRouteBuilder(
           pageBuilder: (_, __, ___) => const ServiceSelectScreen(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: animationDuration,
           transitionsBuilder: (_, a, __, c) =>
               FadeTransition(opacity: a, child: c)),
     );

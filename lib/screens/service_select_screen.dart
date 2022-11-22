@@ -59,14 +59,14 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
                 ),
                 Expanded(
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 400),
+                    duration: animationDuration,
                     curve: Curves.easeIn,
                     alignment: Alignment.center,
                     padding: animating
                         ? const EdgeInsets.symmetric(vertical: 0)
                         : const EdgeInsets.symmetric(vertical: 10),
                     child: AnimatedOpacity(
-                      duration: const Duration(milliseconds: 400),
+                      duration: animationDuration,
                       curve: Curves.easeIn,
                       opacity: animating ? 0 : 1,
                       child: Text(
