@@ -13,7 +13,7 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-  bool navigating = false;
+  bool animating = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -53,11 +53,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 children: [
                   GestureDetector(
                     onTap: () async => {
-                      setState(() => {navigating = true}),
+                      setState(() => {animating = true}),
                       await Future.delayed(const Duration(milliseconds: 400)),
                       openSelectService(context),
                       await Future.delayed(const Duration(milliseconds: 400)),
-                      setState(() => {navigating = false}),
+                      setState(() => {animating = false}),
                     },
                     child: Container(
                       width: 64,
@@ -110,12 +110,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
               child: AnimatedContainer(
                 curve: Curves.easeIn,
                 duration: const Duration(milliseconds: 400),
-                width: navigating
-                    ? MediaQuery.of(context).size.longestSide * 2
-                    : 0,
-                height: navigating
-                    ? MediaQuery.of(context).size.longestSide * 2
-                    : 0,
+                width:
+                    animating ? MediaQuery.of(context).size.longestSide * 2 : 0,
+                height:
+                    animating ? MediaQuery.of(context).size.longestSide * 2 : 0,
                 decoration: const BoxDecoration(
                     color: Color(buttonColor), shape: BoxShape.circle),
               ),
